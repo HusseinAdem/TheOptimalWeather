@@ -26,7 +26,15 @@ public class WeatherController {
         List<TimeSeriesMET> list = weatherService.getMETWeatherList();
         model.addAttribute("weather1", list);
         return "met_forecast";
-    }*/
+    }
+    @GetMapping("mwa_weather")
+    public String getMWAWeather(Model model){
+        model.addAttribute("weather2",weatherService.getMWAWeatherForecast());
+
+        return "mwa_forecast";
+
+    }
+    */
     @GetMapping("smhi_weather_in_24h")
     public String getSMHIWeatherIn24h(Model model){
 
@@ -56,13 +64,6 @@ public class WeatherController {
     public String getIndex(){
         return "index";
     }
-   /* @GetMapping("mwa_weather")
-    public String getMWAWeather(Model model){
-        model.addAttribute("weather2",weatherService.getMWAWeatherForecast());
 
-        return "mwa_forecast";
-
-    }
-    */
 
 }

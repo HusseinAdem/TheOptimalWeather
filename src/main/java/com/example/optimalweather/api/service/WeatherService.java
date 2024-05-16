@@ -69,28 +69,6 @@ public class WeatherService {
     public double getHighestTemperature(WeatherProvider weathers){
         return weathers.getTemperatureIn24h();
     }
-    /*public MyWeatherClass bestWeatherService(){
-
-        double temperatureSMHI = getHighestTemperature(smhiService);
-        double temperatureMET = getHighestTemperature(metService);
-        double temperatureMWA = getHighestTemperature(mwaService);
-
-        MyWeatherClass myWeatherClass = null;
-        if (temperatureSMHI > temperatureMET && temperatureSMHI > temperatureMWA) {
-            myWeatherClass = getWeatherObject(smhiService);
-            System.out.println("Temperaturen från SMHI är högst.");
-        } else if (temperatureMET > temperatureSMHI && temperatureMET > temperatureMWA) {
-            myWeatherClass = getWeatherObject(metService);
-            System.out.println("Temperaturen från MET är högst.");
-        } else if (temperatureMWA > temperatureSMHI && temperatureMWA > temperatureMET) {
-            myWeatherClass = getWeatherObject(mwaService);
-            System.out.println("Temperaturen från MWA är högst.");
-        } else {
-            myWeatherClass = getWeatherObject(smhiService);
-            System.out.println("Det finns ingen tydlig högsta temperatur bland tjänsterna." + "SMHI : " + getWeatherObject(smhiService) + "MWA: " + getWeatherObject(mwaService));
-        }
-        return myWeatherClass;
-    }*/
 
     //EXTRA METODER UTÖVER LABBKRAV
     public MyWeatherClass getMETdataIn24H(){

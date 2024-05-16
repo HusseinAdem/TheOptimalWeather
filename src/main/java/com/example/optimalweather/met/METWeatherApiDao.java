@@ -35,7 +35,6 @@ public class METWeatherApiDao {
         }
         System.out.println("hej");
         return null;
-        //List<TimeSeriesSMHI> timeSeriesSMHIList = getBestWeatherByCelsius();
     }
     private List<TimeSeriesMET> getMETWeatherList(){
         return metWeather().getProperties().getTimeseries();

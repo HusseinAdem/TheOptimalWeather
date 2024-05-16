@@ -24,15 +24,6 @@ public class MyWeatherClass {
 
     }
 
-    public MyWeatherClass(String origin, double airpressure, double temperature, double cloud, Geocoding geocoding) {
-        this.origin = origin;
-        this.timestamp = timestamp;
-        this.airpressure = airpressure;
-        this.temperature = temperature;
-        this.cloud = cloud;
-        this.geocoding = geocoding;
-    }
-
     public MyWeatherClass() {
 
     }
