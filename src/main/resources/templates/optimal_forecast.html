@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .forecast-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .forecast-item p {
+            margin: 5px 0;
+        }
+
+        .forecast-item hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 10px 0;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .main-forecast {
+            font-size: 1.2em;
+            background-color: #90EE90;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .compare-forecast {
+            font-size: 1em;
+            background-color: #E6E6FA;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Weather Forecast </h1>
+
+    <!-- Visa högsta prognosen -->
+    <div class="forecast-item main-forecast">
+        <h2>Högsta temperatur</h2>
+        <p>Provider: <span th:text="${weather1[0].getOrigin()}"></span></p>
+        <p>Tid och datum: <span th:text="${weather1[0].getTimestamp()}"></span></p>
+        <p>Temperatur: <span th:text="${weather1[0].getTemperature()}"></span> °C</p>
+        <p>Lufttryck: <span th:text="${weather1[0].getAirpressure()}"></span> hPa</p>
+        <p>Luftfuktighet: <span th:text="${weather1[0].getCloud()}"></span> %</p>
+        <hr>
+    </div>
+
+    <!-- Visa resten av prognoserna -->
+    <h2>Jämförts med</h2>
+    <div th:each="weatherObject, iterStat : ${weather1}" th:if="${iterStat.index > 0}" class="forecast-item compare-forecast">
+        <p>Provider: <span th:text="${weatherObject.getOrigin()}"></span></p>
+        <p>Tid och datum: <span th:text="${weatherObject.getTimestamp()}"></span></p>
+        <p>Temperatur: <span th:text="${weatherObject.getTemperature()}"></span> °C</p>
+        <p>Lufttryck: <span th:text="${weatherObject.getAirpressure()}"></span> hPa</p>
+        <p>Luftfuktighet: <span th:text="${weatherObject.getCloud()}"></span> %</p>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

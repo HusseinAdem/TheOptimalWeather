@@ -1,0 +1,97 @@
+<!--
+&lt;!&ndash;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WEATHER FORECAST</title>
+</head>
+<body>
+<div th:each="forecast : ${weather1}">
+    <p>Tidpunkt: <span th:text="${forecast.validTime}"></span></p>
+    <p>Temperatur: <span th:text="${forecast.parameters[10].values[0]}"></span> °C</p>
+    <p>Molnighet: <span th:text="${forecast.parameters[6].values[0]}"></span> octas</p>
+    <p>Lufttryck: <span th:text="${forecast.parameters[11].values[0]}"></span> hPa</p>
+    <p>Sikt: <span th:text="${forecast.parameters[12].values[0]}"></span> km</p>
+    &lt;!&ndash; Lägg till fler parametrar om det behövs &ndash;&gt;
+    <hr>
+</div>
+</body>
+</html>&ndash;&gt;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast BY SMHI</title>
+</head>
+<body>
+<div th:each="timeseries : ${weather1}">
+    <p>Tidpunkt: <span th:text="${timeseries.validTime}"></span></p>
+    <p th:each="paramo : ${timeseries.parameters}">
+        <span th:if="${paramo.name == 't'}">Temperatur: <span th:text="${paramo.values[0]}"></span> °C</span>
+        <span th:if="${paramo.name == 'tcc_mean'}">Molnighet: <span th:text="${paramo.values[0]}"></span> octas</span>
+        <span th:if="${paramo.name == 'msl'}">Lufttryck: <span th:text="${paramo.values[0]}"></span> hPa</span>
+        <span th:if="${paramo.name == 'vis'}">Sikt: <span th:text="${paramo.values[0]}"></span> km</span>
+        &lt;!&ndash; Lägg till fler parametrar om det behövs &ndash;&gt;
+    </p>
+    <hr>
+</div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WEATHER FORECAST</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .forecast-item {
+            margin-bottom: 20px;
+        }
+
+        .forecast-item p {
+            margin: 5px 0;
+        }
+
+        .forecast-item hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Weather Forecast BY <span th:text="${weather1.getOrigin()}"></span> (BEST DEGREE CELCIUS)</h1>
+
+    <p>Tid och datum: <span th:text="${weather1.getTimestamp()}"></span></p>
+
+    <p>Temperatur: <span th:text="${weather1.getTemperature()}"></span></p>
+
+    <!-- Anropa method2() -->
+    <p>Lufttryck: <span th:text="${weather1.getAirpressure}"></span></p>
+
+    <!-- Anropa method3() -->
+    <p>Luftfuktighet: <span th:text="${weather1.getCloud}"></span></p>
+</div>
+</body>
+</html>
+
